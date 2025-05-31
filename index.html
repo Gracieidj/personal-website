@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Portfolio Template</title>
+  <title>Gracie's Site</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,6 +25,16 @@
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
 </head>
+
+<!-- Lightbox Overlay -->
+<div id="lightbox" class="lightbox d-none">
+  <div class="lightbox-content">
+    <span id="lightbox-close" class="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="Project Image" class="img-fluid rounded" />
+    <p id="lightbox-caption" class="text-white mt-3 text-center"></p>
+  </div>
+</div>
+
 
 <body>
 
@@ -186,8 +196,9 @@
       </div>
       <div class="row shuffle-wrapper">
         <div class="col-lg-4 col-6 mb-4 shuffle-item">
-          <div class="position-relative rounded hover-wrapper">
-            <img src="images/portfolio/item-1.png" alt="portfolio-image" class="img-fluid rounded w-100">
+          <div class="position-relative rounded hover-wrapper" data-type="image"
+            data-description="A whimsical mushroom potion bottle modeled, rendered and textured with Blender.">
+            <img src="images/portfolio/MushroomBottle.png" alt="Mushroom-image" class="img-fluid rounded w-100">
             <div class="hover-overlay">
               <div class="hover-content">
                 <a class="btn btn-light btn-sm" href="project-single.html">view project</a>
@@ -197,7 +208,7 @@
         </div>
         <div class="col-lg-4 col-6 mb-4 shuffle-item">
           <div class="position-relative rounded hover-wrapper">
-            <img src="images/portfolio/item-2.png" alt="portfolio-image" class="img-fluid rounded w-100">
+            <img src="images/portfolio/SpendSmart-main.png" alt="portfolio-image" class="img-fluid rounded w-100">
             <div class="hover-overlay">
               <div class="hover-content">
                 <a class="btn btn-light btn-sm" href="project-single.html">view project</a>
@@ -207,7 +218,7 @@
         </div>
         <div class="col-lg-4 col-6 mb-4 shuffle-item">
           <div class="position-relative rounded hover-wrapper">
-            <img src="images/portfolio/item-3.png" alt="portfolio-image" class="img-fluid rounded w-100">
+            <img src="images/portfolio/main_screen.png" alt="portfolio-image" class="img-fluid rounded w-100">
             <div class="hover-overlay">
               <div class="hover-content">
                 <a class="btn btn-light btn-sm" href="project-single.html">view project</a>
@@ -216,21 +227,12 @@
           </div>
         </div>
         <div class="col-lg-4 col-6 mb-4 shuffle-item">
-          <div class="position-relative rounded hover-wrapper">
-            <img src="images/portfolio/item-4.png" alt="portfolio-image" class="img-fluid rounded w-100">
+          <div class="position-relative rounded hover-wrapper" data-type="video" data-src="images/portfolio/Dorm.mp4"
+            data-description="Dorm turntable animation in Maya">
+            <img src="images/portfolio/Dorm.png" alt="portfolio-image" class="img-fluid rounded w-100">
             <div class="hover-overlay">
               <div class="hover-content">
-                <a class="btn btn-light btn-sm" href="project-single.html">view project</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-6 mb-4 shuffle-item">
-          <div class="position-relative rounded hover-wrapper">
-            <img src="images/portfolio/item-5.png" alt="portfolio-image" class="img-fluid rounded w-100">
-            <div class="hover-overlay">
-              <div class="hover-content">
-                <a class="btn btn-light btn-sm" href="project-single.html">view project</a>
+                <a class="btn btn-light btn-sm" href="#">view project</a>
               </div>
             </div>
           </div>
@@ -239,6 +241,7 @@
     </div>
   </section>
   <!-- /portfolio -->
+
 
 
   <!-- contact -->

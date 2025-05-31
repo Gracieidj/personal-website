@@ -106,33 +106,33 @@
         dots: false,
         arrows: false,
         responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 400,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
             }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+            }
+        },
+        {
+            breakpoint: 400,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
         ]
     });
 
@@ -151,6 +151,63 @@
             myShuffle.filter(input.value);
         }
     });
+
+    $(document).ready(function () {
+        $('.hover-content a.btn-light').on('click', function (e) {
+            e.preventDefault();
+
+            const $wrapper = $(this).closest('.hover-wrapper');
+            const type = $wrapper.data('type') || 'image';
+            const src = $wrapper.data('src') || $wrapper.find('img').attr('src');
+            const description = $wrapper.data('description') || $wrapper.find('img').attr('alt') || '';
+
+            // Reset content
+            $('#lightbox-img').hide().attr('src', '').attr('alt', '');
+            $('#lightbox-caption').text('');
+            $('#lightbox-video').remove(); // clean up video/iframe
+
+            if (type === 'image') {
+                $('#lightbox-img').attr('src', src).attr('alt', description).show();
+            } else if (type === 'youtube') {
+                const iframe = `<iframe id="lightbox-video" width="100%" height="400" src="${src}" frameborder="0" allowfullscreen></iframe>`;
+                $('.lightbox-content').prepend(iframe);
+            } else if (type === 'video') {
+                const video = `
+        <video id="lightbox-video" controls autoplay class="img-fluid rounded" style="max-height: 80vh;">
+          <source src="${src}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      `;
+                $('.lightbox-content').prepend(video);
+            }
+
+            $('#lightbox-caption').text(description);
+            $('#lightbox').removeClass('d-none');
+        });
+
+        // Close lightbox
+        $('#lightbox, #lightbox-close').on('click', function (e) {
+            if (e.target.id === 'lightbox' || e.target.id === 'lightbox-close') {
+                $('#lightbox').addClass('d-none');
+                $('#lightbox-img').attr('src', '').attr('alt', '').hide();
+                $('#lightbox-caption').text('');
+                $('#lightbox-video').remove();
+            }
+        });
+
+        // ESC key to close
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape' && !$('#lightbox').hasClass('d-none')) {
+                $('#lightbox').addClass('d-none');
+                $('#lightbox-img').attr('src', '').attr('alt', '').hide();
+                $('#lightbox-caption').text('');
+                $('#lightbox-video').remove();
+            }
+        });
+    });
+
+
+
 
 
 
